@@ -1,5 +1,5 @@
 package com.example.model;
-
+import java.util.List;
 public class Board implements Cloneable {
     private final int size;
     private Stone[][] cells;
@@ -16,7 +16,7 @@ public class Board implements Cloneable {
         return size;
     }
     
-    public Stine get(int x, int y) {
+    public Stone get(int x, int y) {
         return cells[x][y];
     }
 

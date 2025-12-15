@@ -14,4 +14,12 @@ public class Position {
         Position p = (Position) o;
         return p.x == x && p.y == y;
     }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
 }

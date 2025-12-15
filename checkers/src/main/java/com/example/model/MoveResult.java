@@ -1,6 +1,11 @@
 package com.example.model;
 
-public class MoveResult {
+import java.util.Collections;
+import java.util.List;
+
+//FactoryMethod - metody ok() i error() tworzą obiekty zamiast konstruktora
+//Immutable Object - Obiekt jest niemutowalny, konstruktor prywatny, pola final
+public final class MoveResult {
     private final boolean ok;
     private final String errorMessage;
     private final List<Positions> captures;
