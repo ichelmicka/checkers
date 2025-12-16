@@ -20,11 +20,11 @@ public final class Board implements Cloneable {
     }
 
     public void set(int x, int y, Stone s) {
-        cells[x][y] = s;
+        cells[y][x] = s;
     }
 
     public Stone get(int x, int y) {
-        return cells[x][y];
+        return cells[y][x];
     }
 
     public boolean isOnBoard(int x, int y) {
