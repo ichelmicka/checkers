@@ -4,6 +4,7 @@ import com.example.model.Player;
 import com.example.model.PlayerFactory;
 import com.example.model.Stone;
 import com.example.model.Move;
+import com.example.model.Board;
 import com.example.model.MoveResult;
 import com.example.game.Game;
 import com.example.game.GameListener;
@@ -90,7 +91,7 @@ public class Server implements GameListener {
 
     // GameListener implementation — wywoływane po poprawnym ruchu
     @Override
-    public void onMoveApplied(Move move, MoveResult result, com.example.game.Board snapshotBoard) {
+    public void onMoveApplied(Move move, MoveResult result, Board snapshotBoard) {
         // broadcast info
         broadcast("MOVE " + move.playerId + " " + (move.pos.x) + " " + (move.pos.y));
         if (result.captures != null && !result.captures.isEmpty()) {

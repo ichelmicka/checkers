@@ -20,17 +20,26 @@ public class Game {
         this.state = GameState.WAITING;
     }
 
+    public Board getBoard() {
+         return board; 
+    }
+
     public void start() {
         if (players.size() == 2) {
             state = GameState.RUNNING;
         }
     }
 
-    public MoveResult applyMove(Move move) {
-        if (state != GameState.RUNNING) return MoveResult.error("Game not running");
-        if (move.getColor() != currentTurn) return MoveResult.error("Not your turn");
+    public Stone getCurrentTurn() {
+        return currentTurn;
+    }
 
-        MoveResult result = board.placeStone(move.getX(), move.getY(), move.getColor());
+    public MoveResult applyMove(Move move) {
+        Player current = players.get(move.getPlayerId()); //wez gracza, ktory gra kolorem podanym w ruchu
+        if (state != GameState.RUNNING) return MoveResult.error("Game not running");
+        if (current.getColor() != currentTurn) return MoveResult.error("Not your turn");
+
+        MoveResult result = board.placeStone(move.getX(), move.getY(), current.getColor());
 
         if (!result.isOk()) {
             return result;
@@ -38,7 +47,6 @@ public class Game {
 
         int captured = result.getCaptures().size();
         
-        Player current = players.get(move.getPlayerId()).getColor(); //wez gracza, ktory gra kolorem podanym w ruchu
         current.addPrisoners(captured);
         
         if (currentTurn == Stone.BLACK) {

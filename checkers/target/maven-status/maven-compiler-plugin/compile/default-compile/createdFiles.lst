@@ -1,0 +1,10 @@
+com/example/model/Position.class
+com/example/client/Client.class
+com/example/game/Game.class
+com/example/model/Move.class
+com/example/model/MoveType.class
+com/example/model/Board.class
+com/example/model/MoveResult.class
+com/example/model/Stone.class
+com/example/model/GameState.class
+com/example/model/Player.class
