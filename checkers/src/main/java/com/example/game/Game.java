@@ -6,19 +6,37 @@ import java.util.*;
 
 
 public class Game {
-    private String id;
     private Board board;
     private Map<Stone, Player> players;
     private Stone currentTurn;
     private GameState state;
 
-    public Game(String id, int boardSize) {
-        this.id = id;
+    public Game(int boardSize) {
         this.board = new Board(boardSize);
         this.players = new HashMap<>();
         this.currentTurn = Stone.BLACK;
         this.state = GameState.WAITING;
     }
+
+    private final List<GameListener> listeners = new ArrayList<>();
+
+    public void addListener(GameListener l) {
+        listeners.add(l);
+    }
+
+    private void notifyMove(Move move, MoveResult result, Board snapshot) {
+        for (GameListener l : listeners) {
+            l.onMoveApplied(move, result, snapshot);
+        }
+    }
+
+    public boolean join(Player p) {
+    if (players.size() >= 2) return false;
+    players.put(p.getColor(), p);
+    if (players.size() == 2) start();
+    return true;
+    }
+
 
     public Board getBoard() {
          return board; 
@@ -55,7 +73,9 @@ public class Game {
         else {
             currentTurn = Stone.BLACK;
         }
-        
+
+        notifyMove(move, result, result.getBoardSnapshot());
+
         return result;
     }
 
