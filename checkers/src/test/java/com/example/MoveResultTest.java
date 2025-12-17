@@ -1,6 +1,9 @@
-package com.example.model;
+package com.example;
 
 import org.junit.jupiter.api.Test;
+
+import com.example.model.Board;
+import com.example.model.MoveResult;
 
 import java.util.Collections;
 

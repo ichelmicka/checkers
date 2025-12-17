@@ -1,8 +1,7 @@
-package com.example.game;
+package com.example;
 
 import com.example.game.*;
 import com.example.model.*;
-import com.example.model.*; 
 import org.junit.jupiter.api.Test; 
 import static org.junit.jupiter.api.Assertions.*;
 

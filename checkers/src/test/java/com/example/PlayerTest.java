@@ -1,6 +1,9 @@
-package com.example.model;
+package com.example;
 
 import org.junit.jupiter.api.Test;
+
+import com.example.model.Player;
+import com.example.model.Stone;
 
 import static org.junit.jupiter.api.Assertions.*;
 
